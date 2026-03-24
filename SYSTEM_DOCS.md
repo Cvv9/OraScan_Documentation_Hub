@@ -48,21 +48,29 @@
 
 ## Known Issues
 
+### CRITICAL Priority
+- [ ] Secrets rotation verification incomplete (SECURITY-04) — verify production secrets have been rotated
+- [ ] No audit logging for compliance (COMPLIANCE-01) — PHI access not logged
+
 ### HIGH Priority
-- [ ] `/settings` route has no auth guard — accessible without login
-- [ ] No sync between local MySQL and cloud PostgreSQL — data loss risk if local device fails
+- [ ] `/settings` route has no auth guard — accessible without login (SECURITY-01)
+- [ ] No sync between local MySQL and cloud PostgreSQL — data loss risk if local device fails (ARCH-01)
+- [ ] No test coverage for critical security features (SECURITY-03) — JWT auth, encryption, password migration untested
 
 ### MEDIUM Priority
-- [ ] Facemesh module is standalone demos, not integrated into scanning workflow
+- [ ] Facemesh module is standalone demos, not integrated into scanning workflow (ARCH-02)
 - [ ] Only 3 backend endpoints — very minimal API; may need expansion
+- [ ] Aadhaar migration status unknown (DATA-01) — verify migration script has been run
 
 ### LOW Priority
-- [ ] `OraScan_Manual_Scanning` appears to mirror `OraScan_Automated_Scanning` — potential code duplication
+- [ ] `OraScan_Manual_Scanning` appears to mirror `OraScan_Automated_Scanning` — potential code duplication (partially addressed via orascan_common)
 
 ## Recent Changes Log
 
 | Date | Change | Files |
 |------|--------|-------|
+| 2026-03-24 | Comprehensive code review completed — 5 critical issues identified | COMPREHENSIVE_CODE_REVIEW_2026-03-24.md |
+| 2026-03-24 | Updated SYSTEM_DOCS with audit findings | SYSTEM_DOCS.md |
 | _initial_ | Auto-generated SYSTEM_DOCS.md, ROUTE_REFERENCE.md, CLAUDE.md | SYSTEM_DOCS.md, ROUTE_REFERENCE.md, CLAUDE.md |
 
 ## Deployment Notes
@@ -79,5 +87,8 @@
 
 ## Last Full Audit
 
-- **Date:** _never_
-- **By:** _pending first human review_
+- **Date:** 2026-03-24
+- **By:** Claude Code (Sonnet 4.5) — Comprehensive Code Review
+- **Findings:** 5 critical issues identified, Sprint 0 & 1 verified complete
+- **Production Readiness:** Conditional GO (requires critical fixes)
+- **Overall Score:** B+ (85/100) — Ready for limited pilot after fixes
